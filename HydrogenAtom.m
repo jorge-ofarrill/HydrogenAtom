@@ -1,19 +1,23 @@
-function HydrogenAtom(n, l_init, m_init)
+function HydrogenAtom(n_init, l_init, m_init)
     % Hydrogen Atom Probability Density Visualization
     close all;
+
+    %% Initialize 
+    n = n_init;
+    l = l_init;
+    m = m_init;
+
     a0 = 1; % Bohr radius
     rdom = 2 * n^2 * a0; % Spatial domain scaling
     grid_size = 100; % Resolution of the grid
+
+    
 
     % Create 3D grid
     x = linspace(-rdom, rdom, grid_size + 1);
     y = linspace(-rdom, rdom, grid_size + 1);
     z = linspace(-rdom, rdom, grid_size + 1);
     [X, Y, Z] = meshgrid(x, y, z);
-
-    % Initialize quantum numbers
-    l = l_init;
-    m = m_init;
 
     % Precompute and visualize
     [psi_squared, density_threshold] = computeProbabilityDensity();
@@ -129,6 +133,9 @@ end
 
 function decreaseN(~, ~)
         n = n - 1;
+        if l>=n
+            l = n-1;
+        end
         if n < 1
             n=1;
         end
