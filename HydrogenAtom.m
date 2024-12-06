@@ -11,8 +11,6 @@ a0 = 1; % Bohr radius
 rdom = 2 * n^2 * a0; % Spatial domain scaling
 grid_size = 100; % Resolution of the grid
 
-
-
 % Create 3D grid
 x = linspace(-rdom, rdom, grid_size + 1);
 y = linspace(-rdom, rdom, grid_size + 1);
